@@ -1,4 +1,4 @@
-Instale o Python em sua máquina, depois digite no prompt: 
+Instale o Python em sua máquina, depois digite no terminal: 
 
 1- "py -3 -m venv .venv"
 
