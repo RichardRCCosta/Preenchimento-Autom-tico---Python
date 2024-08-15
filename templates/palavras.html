@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Palavras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gerenciar Palavras</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('palavras') }}">Gerenciar Palavras</a>
+        </nav>
+    </header>
+    
+    <main>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Palavra</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for palavra in palavras %}
+                <tr>
+                    <td>{{ palavra.id }}</td>
+                    <td>{{ palavra.palavra }}</td>
+                    <td>
+                        <form action="{{ url_for('excluir_palavra', id=palavra.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta palavra?');">
+                            <button type="submit" class="btn-excluir">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
